@@ -70,11 +70,59 @@ print(f"\n{cars[0].title()} is ${MSRPS[0]}. Monthly payment for 5 years is ${mon
 
 
 # Do the same thing, but give them 4yr and 6yr options for the same vehicle
+print("\n")
 monthly_payment = MSRPS[0] / LOAN4 
 print(f"{cars[0].title()} is ${MSRPS[0]}. Monthly payment for 4 years is ${monthly_payment}.")
 
-# Lastly, give them a 5yr option for each of the other vehicles, just to see if they are interested
 
+monthly_payment = MSRPS[0] / LOAN6 
+print(f"{cars[0].title()} is ${MSRPS[0]}. Monthly payment for 4 years is ${monthly_payment}.")
+
+
+# Lastly, give them a 5yr option for each of the other vehicles, just to see if they are interested
+print("\n")
 for index in range(len(cars)):
     monthly_payment = MSRPS[index] / LOAN5 
     print(f"{cars[index].title()} is ${MSRPS[index]}. Monthly payment for 5 years is ${monthly_payment}.")
+
+
+### 3 new features ###
+print("\n### 3 new features ###")
+
+
+# Calculate interest for 3 year loan on the first car
+print("#### Feature 1 ####")
+LOAN3 = 3 * MONTH_IN_A_YEAR
+monthly_payment = (MSRPS[0] / LOAN3) * 1.05
+total_price = monthly_payment * LOAN3 
+print(f"{cars[0].title()} is ${MSRPS[0]}. Monthly payment for 3 years with 1.05 interest is ${monthly_payment}.\nTotal is ${total_price}")
+
+
+# Calculate insurance for each car price for drivers younger than 21 years old
+# Import math
+import math
+print("\n#### Feature 2 ####")
+
+# Calculate insurance
+insurance_underage = []
+for price in MSRPS:
+    insurance_underage.append(math.floor((price / 12) - 200))
+
+# Share the prices with the guest
+print("If you are less than 21 year old, here are the insurance prices for each car per year:")
+for index in range(len(new_year_models)):
+    print(f"{new_year_models[index]}: $ {insurance_underage[index]}")
+
+
+# Calculate insurance for each car price for drivers younger than 21 years old
+print("\n#### Feature 2 ####")
+
+# Calculate insurance
+insurance_regular = []
+for price in MSRPS:
+    insurance_regular.append(math.floor((price / 12) - 700))
+
+# Share the prices with the guest
+print("If you are older than 21 year old, here are the insurance prices for each car per year:")
+for index in range(len(new_year_models)):
+    print(f"{new_year_models[index]}: $ {insurance_regular[index]}")
